@@ -1,0 +1,14 @@
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\bin\Debug\net10.0\MusicSorter.exe
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\bin\Debug\net10.0\MusicSorter.deps.json
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\bin\Debug\net10.0\MusicSorter.runtimeconfig.json
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\bin\Debug\net10.0\MusicSorter.dll
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\bin\Debug\net10.0\MusicSorter.pdb
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.AssemblyInfoInputs.cache
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.AssemblyInfo.cs
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.csproj.CoreCompileInputs.cache
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.dll
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\refint\MusicSorter.dll
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.pdb
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\MusicSorter.genruntimeconfig.cache
+C:\Users\offic\RiderProjects\music-sorter\MusicSorter\obj\Debug\net10.0\ref\MusicSorter.dll
