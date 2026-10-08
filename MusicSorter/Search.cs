@@ -1,6 +1,6 @@
 ﻿namespace MusicSorter;
 
-public class Search
+public static class Search
 {
     public static Dictionary<string, List<string>> FindTracks(
         string sourceFolder,

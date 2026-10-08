@@ -20,25 +20,14 @@ var restMatches = trackMatches
     .Where(match => match.Value.Count != 1)
     .ToDictionary(match => match.Key, match => match.Value);
 
-// Move files with exactly 1 match
-Output.Display(
-    singleMatches,
-    "Tracks to move",
-    $"Do you want to move {singleMatches.Count} tracks automatically? Press 'Y' to move, any other key to skip:");
-
 // Ask for confirmation before moving files
-var decision = Console.ReadKey(intercept: true);
-
-Console.WriteLine();
-
-if (decision.Key == ConsoleKey.Y)
+if (Prompt.Confirm($"Do you want to move {singleMatches.Count} tracks automatically? Press 'Y' to move, any other key to skip:"))
 {
     FileMover.Move(singleMatches, copyFolder);
 }
 else
 {
     Console.WriteLine("Skipping...");
-
     restMatches = restMatches
         .Concat(singleMatches)
         .ToDictionary(match => match.Key, match => match.Value);
@@ -52,5 +41,3 @@ Output.Display(
     restMatches,
     "Tracks requiring manual action",
     "The following tracks could not be moved automatically:");
-
-

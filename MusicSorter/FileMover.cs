@@ -13,8 +13,24 @@ public static class FileMover
             var sourcePath = match.Value[0];
             var fileName = Path.GetFileName(sourcePath);
             var destinationPath = Path.Combine(destinationFolder, fileName);
+            
+            // Check if file already exists
+            if (File.Exists(destinationPath))
+            {
+                Console.WriteLine($"File '{fileName}' already exists. Skipping.");
+                continue;
+            }
 
-            File.Move(sourcePath, destinationPath);
+            try
+            {
+                File.Move(sourcePath, destinationPath);
+                Console.WriteLine($"Moved '{fileName}' to '{destinationPath}'.");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"Error moving '{fileName}': {ex.Message}");
+            }
+            
         }
     }
 }
