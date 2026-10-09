@@ -19,10 +19,14 @@ public static class Search
             .Select(t => t.Replace("_", "'").Trim())
             .ToList();
         
-        foreach (var track in normalizedTracks)
+        foreach (var track in tracks)
         {
+            var normalizedTrack = track
+                .Replace("'", "_")
+                .Trim();
+
             results[track] = allMp3Files
-                .Where(path => ContainsTrack(path, track))
+                .Where(path => ContainsTrack(path, normalizedTrack))
                 .ToList();
         }
 
