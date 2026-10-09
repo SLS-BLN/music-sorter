@@ -9,16 +9,21 @@ public static class Search
         Console.WriteLine("Searching...");  
 
         // Single enumeration for this call
-        var allMp3Tracks = GetAllMp3Files(sourceFolder).ToList();
+        var allMp3Files = GetAllMp3Files(sourceFolder).ToList();
 
         var results = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
 
-        foreach (var track in tracks)
+        // Normalize track names: trim whitespace and replace underscores with apostrophes.
+        // NOTE: Google Takeout exports track names with underscores, while the accompanying CSV uses apostrophes.
+        var normalizedTracks = tracks
+            .Select(t => t.Replace("_", "'").Trim())
+            .ToList();
+        
+        foreach (var track in normalizedTracks)
         {
-            var matches = allMp3Tracks
-                              .Where(path => ContainsTrack(path, track))
-                              .ToList();
-            results[track] = matches;
+            results[track] = allMp3Files
+                .Where(path => ContainsTrack(path, track))
+                .ToList();
         }
 
         return results;
