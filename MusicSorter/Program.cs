@@ -1,8 +1,16 @@
 ﻿using MusicSorter;
 
-// Get input
+// Get input - album title and artist
 var albumTitle = Input.ReadAlbumTitle();
 var artist = Input.ReadArtist();
+
+if (AlbumFinder.AlbumExists(artist, albumTitle))
+{
+    Console.WriteLine("Album already exists. Skipping...");
+    return;
+}
+
+// Get input - tracks
 var tracks = Input.ReadTracks();
 
 // Create a path
