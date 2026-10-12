@@ -13,11 +13,17 @@ if (AlbumFinder.AlbumExists(artist, albumTitle))
 // Get input - tracks
 var tracks = Input.ReadTracks();
 
+var album = new Album(
+    Artist: artist,
+    Title: albumTitle,
+    Tracks: tracks);
+
 // Create a path
-var copyFolder = PathBuilder.CopyFolder(artist, albumTitle, Configuration.MusicFolder);
+var targetPath  = PathBuilder.BuildTargetPath(album);
 
 // Search files
-var trackMatches = Search.FindTracks(Configuration.SourceFolder, tracks);
+// var trackMatches = Search.FindTracks(Configuration.SourceFolder, tracks);
+var trackMatches = Search.FindTracks(album);
 
 // Split into two lists
 var singleMatches = trackMatches
@@ -31,7 +37,7 @@ var restMatches = trackMatches
 // Ask for confirmation before moving files
 if (Prompt.Confirm($"Do you want to move {singleMatches.Count} tracks automatically? Press 'Y' to move, any other key to skip:"))
 {
-    FileMover.Move(singleMatches, copyFolder);
+    FileMover.Move(singleMatches, targetPath );
 }
 else
 {

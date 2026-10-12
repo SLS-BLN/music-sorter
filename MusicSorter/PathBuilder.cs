@@ -3,21 +3,21 @@ using System.Text.RegularExpressions;
 
 public static class PathBuilder
 {
-    public static string CopyFolder (string artist, string albumTitle, string musicFolder)
+    public static string BuildTargetPath (Album album)
     {
         // create target path
         var artistFolder = Regex.Replace(
-            artist, 
+            album.Artist, 
             "[<>:/\\|?*]", 
             "_");
 
         var albumFolder = Regex.Replace (
-            albumTitle,
+            album.Title,
             "[<>:/\\|?*]", 
             "_"
         );
 
-        var copyFolder = Path.Combine(musicFolder, artistFolder, albumFolder);
+        var copyFolder = Path.Combine(Configuration.MusicFolder, artistFolder, albumFolder);
         return copyFolder;
     }
 }

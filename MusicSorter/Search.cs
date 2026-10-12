@@ -2,30 +2,24 @@
 
 public static class Search
 {
-    public static Dictionary<string, List<string>> FindTracks(
-        string sourceFolder,
-        List<string> tracks)
+    public static Dictionary<string, List<string>> FindTracks(Album album)
     {
         Console.WriteLine("Searching...");  
 
         // Single enumeration for this call
-        var allMp3Files = GetAllMp3Files(sourceFolder).ToList();
+        var allMp3Files = GetAllMp3Files(Configuration.SourceFolder).ToList();
 
         var results = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
 
         // Normalize track names: trim whitespace and replace underscores with apostrophes.
         // NOTE: Google Takeout exports track names with underscores, while the accompanying CSV uses apostrophes.
-        var normalizedTracks = tracks
-            .Select(t => t.Replace("_", "'").Trim())
-            .ToList();
-        
-        foreach (var track in tracks)
+        foreach (var track in album.Tracks)
         {
             var normalizedTrack = track
-                .Replace("'", "_")
+                .Replace("_", "'")
                 .Trim();
 
-            results[track] = allMp3Files
+            results[normalizedTrack] = allMp3Files
                 .Where(path => ContainsTrack(path, normalizedTrack))
                 .ToList();
         }
