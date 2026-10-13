@@ -16,7 +16,7 @@ public static class Search
         foreach (var track in album.Tracks)
         {
             var normalizedTrack = track
-                .Replace("_", "'")
+                .Replace("'", "_")
                 .Trim();
 
             results[normalizedTrack] = allMp3Files
